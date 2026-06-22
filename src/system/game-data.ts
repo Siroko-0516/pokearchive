@@ -366,6 +366,12 @@ export class GameData {
         this.voucherCounts[index] = systemData.voucherCounts[index] || 0;
       });
     }
+    if (loggedInUser?.hasAdminRole) {
+      getEnumKeys(VoucherType).forEach(key => {
+        const index = VoucherType[key];
+        this.voucherCounts[index] = 999;
+      });
+    }
 
     this.eggs = systemData.eggs ? systemData.eggs.map(e => e.toEgg()) : [];
 
