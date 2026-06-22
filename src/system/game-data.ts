@@ -366,12 +366,12 @@ export class GameData {
         this.voucherCounts[index] = systemData.voucherCounts[index] || 0;
       });
     }
-    if (loggedInUser?.hasAdminRole) {
-      getEnumKeys(VoucherType).forEach(key => {
-        const index = VoucherType[key];
-        this.voucherCounts[index] = 999;
-      });
-    }
+    //if (loggedInUser?.hasAdminRole) {
+      //getEnumKeys(VoucherType).forEach(key => {
+        //const index = VoucherType[key];
+        //this.voucherCounts[index] = 999;
+      //});
+    //}
 
     this.eggs = systemData.eggs ? systemData.eggs.map(e => e.toEgg()) : [];
 
@@ -964,15 +964,15 @@ export class GameData {
     }
 
     globalScene.money = Math.floor(fromSession.money || 0);
-    //globalScene.updateMoneyText();바뀜
-    if (loggedInUser?.hasAdminRole) {
-      const MAX_MONEY = 9999999;
-      const MAX_POKEBALLS = 999;
-      globalScene.money = MAX_MONEY;
-      Object.keys(globalScene.pokeballCounts).forEach((key: string) => {
-        globalScene.pokeballCounts[key] = MAX_POKEBALLS;
-      });
-    }
+    globalScene.updateMoneyText();
+    //if (loggedInUser?.hasAdminRole) {
+      //const MAX_MONEY = 9999999;
+      //const MAX_POKEBALLS = 999;
+      //globalScene.money = MAX_MONEY;
+      //Object.keys(globalScene.pokeballCounts).forEach((key: string) => {
+        //globalScene.pokeballCounts[key] = MAX_POKEBALLS;
+      //});
+    //}
 
     globalScene.updateMoneyText();
 
