@@ -958,6 +958,16 @@ export class GameData {
     }
 
     globalScene.money = Math.floor(fromSession.money || 0);
+    //globalScene.updateMoneyText();바뀜
+    if (loggedInUser?.hasAdminRole) {
+      const MAX_MONEY = 9999999;
+      const MAX_POKEBALLS = 999;
+      globalScene.money = MAX_MONEY;
+      Object.keys(globalScene.pokeballCounts).forEach((key: string) => {
+        globalScene.pokeballCounts[key] = MAX_POKEBALLS;
+      });
+    }
+
     globalScene.updateMoneyText();
 
     if (globalScene.money > this.gameStats.highestMoney) {
