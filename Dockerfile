@@ -26,10 +26,10 @@ COPY . .
 COPY package.json pnpm-lock.yaml ./
 
 # Install all dependencies
-//RUN --mount=type=cache,target=/home/appuser/.pnpm-store \
-RUN --mount=type=cache,id=pnpm-store,target=/home/appuser/.pnpm-store \
-    pnpm install --frozen-lockfile && \
-    rm -rf /home/appuser/.pnpm-store/*
+RUN --mount=type=cache,target=/home/appuser/.pnpm-store \
+#RUN --mount=type=cache,id=pnpm-store,target=/home/appuser/.pnpm-store \
+    #pnpm install --frozen-lockfile && \
+    #rm -rf /home/appuser/.pnpm-store/*
 
 # Change ownership
 RUN chown -R appuser:appgroup /app
